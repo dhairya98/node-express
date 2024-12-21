@@ -1,10 +1,14 @@
 const express = require('express')
+
 const app = express();
 const db = require('./db')
 const Person = require('./models/person')
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
 
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3000
 
 app.get('/', (req, res)=>{
     res.send('Hello World')
@@ -33,6 +37,6 @@ app.get('/person', async (req, res)=> {
     }
 })
 
-app.listen(3000, ()=>{
+app.listen(PORT, ()=>{
     console.log('Server listening on port 3000');
 })
